@@ -2,7 +2,6 @@ import { fetchFromServer } from "@/config/functions";
 import Image from "next/image";
 
 export const revalidate = 0;
-export const runtime = "edge";
 
 export default async function Home() {
   const data = await fetchFromServer("home");
