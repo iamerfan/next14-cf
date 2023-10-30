@@ -1,5 +1,7 @@
 import { ConnectToDatabase, Res } from "@/config/db";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const { connect, close, db } = await ConnectToDatabase();
   await connect();
