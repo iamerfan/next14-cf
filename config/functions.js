@@ -6,7 +6,7 @@ export const fetchFromServer = async (route, method, userOptions) => {
 
   const initialOptions = {
     method: method || "GET",
-    cache: "force-cache" || "no-store",
+    cache:  "no-store",
   };
 
   const options = {
