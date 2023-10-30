@@ -1,9 +1,11 @@
+import { fetchFromServer } from "@/config/functions";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetchFromServer("home");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -51,12 +53,10 @@ export default function Home() {
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"></span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50 `}>
+            {data[0].tags.map((item) => `${item} -`)}
           </p>
         </a>
 
