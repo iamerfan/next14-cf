@@ -1,13 +1,12 @@
 const dev = process.env.NODE_ENV !== "production";
 export const server = dev ? "http://localhost:3000" : process.env.URL;
 
-export const fetchFromServer = async (url, method, userOptions) => {
-  const url = `${server}/api/${url}`;
+export const fetchFromServer = async (route, method, userOptions) => {
+  const url = `${server}/api/${route}`;
 
   const initialOptions = {
-    next: { revalidate: 5 },
     method: method || "GET",
-    cache: "no-store",
+    cache: "force-cache" || "no-store",
   };
 
   const options = {
